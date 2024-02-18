@@ -1,0 +1,13 @@
+name = "PropertyMethods"
+uuid = "347c79ec-5835-41b8-b087-11d269c34aff"
+authors = ["MarkNahabedian <naha@mit.edu> and contributors"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
