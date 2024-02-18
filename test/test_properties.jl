@@ -4,7 +4,7 @@ struct MyStruct
     a::Int
 end
 
-@njl_getprop MyStruct
+@property_trampolines MyStruct
 
 function Base.getproperty(o::MyStruct, prop::Val{:b})
     o.a * 2

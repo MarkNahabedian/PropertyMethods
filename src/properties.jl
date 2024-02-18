@@ -7,7 +7,7 @@
 # A struct might have fields, which are exposed as properties.  The
 # `Val` methods will not shadow the method that implements that.
 
-export @njl_getprop
+export @property_trampolines
 
 
 """
@@ -32,12 +32,12 @@ function propertynames_from_val_methods(t::Type, private::Bool)
 end
 
 """
-    @njl_getprop MyStruct
+    @property_trampolines MyStruct
 
 Define the methods necessary so that `Val` specialized `getproperty`
 methods for `MyStruct` will find `Val` specialized properties.
 """
-macro njl_getprop(structname)
+macro property_trampolines(structname)
     quote
         Base.getproperty(o::$(esc(structname)), prop::Symbol) =
             Base.getproperty(o, Val(prop))
