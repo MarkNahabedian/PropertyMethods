@@ -1,5 +1,5 @@
 module PropertyMethods
 
-# Write your package code here.
+include("Properties.jl")
 
 end
