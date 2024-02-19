@@ -1,3 +1,5 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+Literate = "98b081ad-f1c9-55d3-8b20-4c87d4299306"
+MacroTools = "1914dd2f-81c6-5fcd-8719-6d5c9610ff09"
 PropertyMethods = "347c79ec-5835-41b8-b087-11d269c34aff"
