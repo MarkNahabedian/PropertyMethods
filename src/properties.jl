@@ -7,7 +7,7 @@
 # A struct might have fields, which are exposed as properties.  The
 # `Val` methods will not shadow the method that implements that.
 
-export @property_trampolines
+export @property_trampolines, @delegate
 
 
 """
@@ -48,5 +48,30 @@ macro property_trampolines(structname)
         Base.hasproperty(o::$(esc(structname)), prop::Symbol) =
             prop in propertynames_from_val_methods(typeof(o), true)
     end
+end
+
+
+"""
+    @delegate from_type to_field properties...
+
+Defines `getproperty` methods on `from_type` that for each of the
+enumerated `properties` that will return the value of that property
+from a `from_type` instance's `to_field`.
+"""
+macro delegate(from_type, to_field, properties...)
+    methods = []
+    for prop in properties
+        push!(methods,
+              esc(Expr(:(=),
+                       Expr(:call,
+                            Expr(:(.), :Base, QuoteNode(:getproperty)),
+                            Expr(:(::), :o, from_type),
+                            Expr(:(::),
+                                 Expr(:curly, :Val, QuoteNode(prop)))),
+                       Expr(Symbol("."),
+                            Expr(:(.), :o, QuoteNode(to_field)),
+                            QuoteNode(prop)))))
+    end
+    quote $(methods...) end
 end
 
