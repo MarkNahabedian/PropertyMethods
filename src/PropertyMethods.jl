@@ -1,5 +1,5 @@
 module PropertyMethods
 
-include("Properties.jl")
+include("properties.jl")
 
 end
