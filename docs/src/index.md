@@ -43,7 +43,7 @@ Base.getproperty(r::OffsetRectangle, ::Val{:height}) =
 @property_trampolines OffsetRectangle
 ```
 
-The macro is necessary to define some additional methods:
+`@property_trampolines` is necessary to define some additional methods:
 
 ```@example 1
 using MacroTools
