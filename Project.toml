@@ -1,7 +1,7 @@
 name = "PropertyMethods"
 uuid = "347c79ec-5835-41b8-b087-11d269c34aff"
 authors = ["MarkNahabedian <naha@mit.edu> and contributors"]
-version = "1.0.0"
+version = "1.1.0-DEV"
 
 [compat]
 julia = "1"
